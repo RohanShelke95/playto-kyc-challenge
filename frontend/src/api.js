@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: 'https://playto-kyc-challenge-production.up.railway.app/api/v1/',
+    baseURL: 'https://incredible-respect-production.up.railway.app/api/v1/',
 });
 
 api.interceptors.request.use((config) => {
