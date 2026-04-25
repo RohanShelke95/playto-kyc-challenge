@@ -1,6 +1,6 @@
-from django.urls import path, include
+from django.urls import re_path, include
 
 urlpatterns = [
-    path('auth/', include('core.urls')),
-    path('kyc/', include('kyc.urls')),
+    re_path(r'^auth/?', include('core.urls')),
+    re_path(r'^kyc/?', include('kyc.urls')),
 ]
