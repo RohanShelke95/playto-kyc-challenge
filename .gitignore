@@ -1,0 +1,18 @@
+# Python Environments
+backend/venv/
+backend/__pycache__/
+backend/*.pyc
+backend/*.pyo
+backend/db.sqlite3
+backend/media/
+
+# Node & Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/dist-ssr/
+frontend/.vite/
+frontend/.env.local
+
+# Operating System
+.DS_Store
+Thumbs.db
