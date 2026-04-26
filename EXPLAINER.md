@@ -77,13 +77,19 @@ class IsReviewer(IsAuthenticated):
 This hard wall guarantees users accessing `kyc/reviewer/` directories are 100% designated `Reviewers`. Both conditions completely prevent merchants from sniffing lateral profiles.
 
 ## 5. The AI Audit
-An AI tooling system might try solving state machine limitations by nesting conditional IF-statements heavily within serializers or APIViewSet paths like:
+An AI tooling system generated a custom Django username validator to allow spaces in usernames:
 ```python
 # AI Code:
-class TransitionViewSet(APIView):
-    def post(self, request, id):
-         k = KYCSubmission.objects.get(id)
-         if k.status == 'approved' and action == 'approve':
-             return 400
+class SpaceUsernameValidator(RegexValidator):
+    regex = r'^[\w.@+-\s]+$'
+    message = "Enter a valid username."
 ```
-This is inherently buggy because what if a new `approve` function is written somewhere else in the codebase, such as a bulk approval CRM command script? It'll bypass standard ViewSet logic. I caught this standard flaw immediately and implemented the enforcement internally within the model layer `transition_to()`.
+This looked completely fine at first glance. However, when I ran the application locally on Python 3.13, Django crashed internally with a `PatternError: bad character range +-\s at position 6` when attempting to register or login. 
+
+I caught that in Python 3.13, the regex `+-\s` is interpreted as an invalid character range from `+` to `\s` (a character class). The AI mistakenly placed the hyphen in the middle of the bracket expression instead of at the end. I debugged the 500 error, caught the mistake, and replaced it with a safe regex:
+```python
+# My Fix:
+class SpaceUsernameValidator(RegexValidator):
+    regex = r'^[\w.@+\s-]+$'
+```
+This is a perfect example of why you cannot blindly trust AI-generated code without understanding the underlying syntax rules of the specific Python version you are running.

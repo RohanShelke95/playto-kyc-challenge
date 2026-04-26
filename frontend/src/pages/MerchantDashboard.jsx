@@ -134,17 +134,17 @@ const MerchantDashboard = () => {
                             <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-1">PAN Document</label>
                                 {isEditable && <input type="file" onChange={e => setPanDoc(e.target.files[0])} accept=".pdf,.jpg,.png" className="block w-full text-sm" />}
-                                {submission.pan_document && <a href={`http://localhost:8000${submission.pan_document}`} target="_blank" rel="noreferrer" className="text-blue-500 text-sm block mt-1">View Current PAN</a>}
+                                {submission.pan_document && <a href={`${submission.pan_document}`} target="_blank" rel="noreferrer" className="text-blue-500 text-sm block mt-1">View Current PAN</a>}
                             </div>
                             <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-1">Aadhaar Document</label>
                                 {isEditable && <input type="file" onChange={e => setAadhaarDoc(e.target.files[0])} accept=".pdf,.jpg,.png" className="block w-full text-sm" />}
-                                {submission.aadhaar_document && <a href={`http://localhost:8000${submission.aadhaar_document}`} target="_blank" rel="noreferrer" className="text-blue-500 text-sm block mt-1">View Current Aadhaar</a>}
+                                {submission.aadhaar_document && <a href={`${submission.aadhaar_document}`} target="_blank" rel="noreferrer" className="text-blue-500 text-sm block mt-1">View Current Aadhaar</a>}
                             </div>
                             <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-1">Bank Statement</label>
                                 {isEditable && <input type="file" onChange={e => setBankStmt(e.target.files[0])} accept=".pdf,.jpg,.png" className="block w-full text-sm" />}
-                                {submission.bank_statement && <a href={`http://localhost:8000${submission.bank_statement}`} target="_blank" rel="noreferrer" className="text-blue-500 text-sm block mt-1">View Current Bank Statement</a>}
+                                {submission.bank_statement && <a href={`${submission.bank_statement}`} target="_blank" rel="noreferrer" className="text-blue-500 text-sm block mt-1">View Current Bank Statement</a>}
                             </div>
                         </div>
 

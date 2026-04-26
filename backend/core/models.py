@@ -3,7 +3,7 @@ from django.db import models
 from django.core.validators import RegexValidator
 
 class SpaceUsernameValidator(RegexValidator):
-    regex = r'^[\w.@+-\s]+$'
+    regex = r'^[\w.@+\s-]+$'
     message = "Enter a valid username. This value may contain only letters, numbers, spaces, and @/./+/-/_ characters."
 
 class User(AbstractUser):

@@ -28,7 +28,7 @@ const ReviewerSubmissionDetail = () => {
     if (!sub) return <div className="p-8">Loading...</div>;
 
     const DocLink = ({ url, label }) => url ? (
-        <a href={`http://localhost:8000${url}`} target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">{label}</a>
+        <a href={`${url}`} target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">{label}</a>
     ) : <span className="text-gray-400">Not provided</span>;
 
     return (

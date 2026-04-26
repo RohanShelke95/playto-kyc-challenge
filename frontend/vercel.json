@@ -2,7 +2,11 @@
   "rewrites": [
     {
       "source": "/api/v1/:path*",
-      "destination": "https://incredible-respect-production.up.railway.app/api/v1/:path*/"
+      "destination": "https://incredible-respect-production.up.railway.app/api/v1/:path*"
+    },
+    {
+      "source": "/media/:path*",
+      "destination": "https://incredible-respect-production.up.railway.app/media/:path*"
     },
     {
       "source": "/(.*)",
