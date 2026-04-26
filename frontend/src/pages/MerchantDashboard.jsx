@@ -15,7 +15,7 @@ const MerchantDashboard = () => {
 
     const fetchSubmission = async () => {
         try {
-            const res = await api.get('kyc/merchant/');
+            const res = await api.get('kyc/merchant');
             setSubmission(res.data);
             setFormData(res.data);
             setLoading(false);
@@ -47,7 +47,7 @@ const MerchantDashboard = () => {
         if (bankStmt) data.append('bank_statement', bankStmt);
         
         try {
-            await api.put('kyc/merchant/', data, {
+            await api.put('kyc/merchant', data, {
                 headers: { 'Content-Type': 'multipart/form-data' }
             });
             alert('Progress saved!');
@@ -61,7 +61,7 @@ const MerchantDashboard = () => {
 
     const handleSubmitForReview = async () => {
         try {
-            await api.post('kyc/merchant/submit/');
+            await api.post('kyc/merchant/submit');
             alert('Submitted for review!');
             fetchSubmission();
         } catch (error) {

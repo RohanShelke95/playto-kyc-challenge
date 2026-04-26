@@ -14,10 +14,10 @@ const ReviewerDashboard = () => {
 
     const fetchData = async () => {
         try {
-            const mRes = await api.get('kyc/reviewer/metrics/');
+            const mRes = await api.get('kyc/reviewer/metrics');
             setMetrics(mRes.data);
             
-            const qRes = await api.get('kyc/reviewer/queue/');
+            const qRes = await api.get('kyc/reviewer/queue');
             setQueue(qRes.data);
         } catch (error) {
             console.error(error);

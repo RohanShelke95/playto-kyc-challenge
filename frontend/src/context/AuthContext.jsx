@@ -16,14 +16,14 @@ export const AuthProvider = ({ children }) => {
     }, []);
 
     const login = async (username, password) => {
-        const res = await api.post('auth/login/', { username, password });
+        const res = await api.post('auth/login', { username, password });
         localStorage.setItem('token', res.data.token);
         localStorage.setItem('user', JSON.stringify(res.data.user));
         setUser(res.data.user);
     };
 
     const register = async (username, password, role) => {
-        const res = await api.post('auth/register/', { username, password, role });
+        const res = await api.post('auth/register', { username, password, role });
         localStorage.setItem('token', res.data.token);
         localStorage.setItem('user', JSON.stringify(res.data.user));
         setUser(res.data.user);

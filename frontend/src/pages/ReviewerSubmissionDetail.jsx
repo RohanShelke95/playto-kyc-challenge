@@ -9,7 +9,7 @@ const ReviewerSubmissionDetail = () => {
     const [reason, setReason] = useState('');
 
     useEffect(() => {
-        api.get(`kyc/reviewer/submissions/${id}/`).then(res => setSub(res.data)).catch(console.error);
+        api.get(`kyc/reviewer/submissions/${id}`).then(res => setSub(res.data)).catch(console.error);
     }, [id]);
 
     const handleTransition = async (action) => {
@@ -18,7 +18,7 @@ const ReviewerSubmissionDetail = () => {
             return;
         }
         try {
-            await api.post(`kyc/reviewer/submissions/${id}/transition/`, { action, reason });
+            await api.post(`kyc/reviewer/submissions/${id}/transition`, { action, reason });
             navigate('/reviewer');
         } catch (err) {
             alert(err.response?.data?.error || 'Error processing request');
