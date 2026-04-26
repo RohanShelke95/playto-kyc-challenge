@@ -69,7 +69,19 @@ const MerchantDashboard = () => {
         }
     };
 
-    if (loading) return <div className="p-8">Loading...</div>;
+    if (loading) return <div className="p-8 text-center text-gray-500">Loading your dashboard...</div>;
+
+    if (!submission) return (
+        <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center p-8">
+            <div className="bg-white rounded-lg shadow p-8 max-w-md w-full text-center">
+                <h2 className="text-xl font-bold text-red-600 mb-2">Could not load dashboard</h2>
+                <p className="text-gray-600 mb-4">Unable to connect to the server. Please try refreshing the page.</p>
+                <button onClick={fetchSubmission} className="bg-blue-600 text-white px-6 py-2 rounded font-semibold hover:bg-blue-700">
+                    Retry
+                </button>
+            </div>
+        </div>
+    );
 
     const isEditable = submission.status === 'draft' || submission.status === 'more_info_requested';
 
